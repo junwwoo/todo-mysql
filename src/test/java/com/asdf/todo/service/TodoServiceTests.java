@@ -1,7 +1,7 @@
 package com.asdf.todo.service;
 
 
-import com.asdf.todo.model.Todo;
+import com.asdf.todo.entity.Todo;
 import com.asdf.todo.repository.TodoInMemoryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
