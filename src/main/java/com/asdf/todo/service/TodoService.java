@@ -42,7 +42,7 @@ public class TodoService {
 
 
     @Transactional
-    public Todo update(Long id, TodoRequestDto todoRequestDto) {
+    public TodoResponseDto update(Long id, TodoRequestDto todoRequestDto) {
         Todo todo = EntityDtoMapper.toEntity(todoRequestDto);
         todo.setId(id);
         Todo updatedTodo = todoRepository.save(todo);

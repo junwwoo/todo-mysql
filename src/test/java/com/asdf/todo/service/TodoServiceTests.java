@@ -53,7 +53,6 @@ public class TodoServiceTests {
     void setUp() {
         todoRepository.deleteAll();
         todoService = new TodoService(todoRepository);
-
         todo1Id = todoService.save(new TodoRequestDto("Test Todo 1", "Description1"))
                 .getId();
         todo2Id = todoService.save(new TodoRequestDto("Test Todo 2", "Description2"))

@@ -17,6 +17,7 @@ import java.util.Collections;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willDoNothing;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -90,13 +91,18 @@ public class TodoControllerTests {
                 new TodoResponseDto(1L, "Updated Todo", "Updated Description",
                         true);
 
-        given(todoService.findById(1L)).willReturn(existingTodo);
-        given(todoService.update(anyLong(),
-                any(TodoRequestDto.class))).willReturn(updatedTodo);
+//        given(todoService.findById(1L)).willReturn(existingTodo);
+//        given(todoService.update(anyLong(),
+//                any(TodoRequestDto.class))).willReturn(updatedTodo);
+        given(todoService.findById(1L)).willReturn(new TodoResponseDto(1L,
+                "Existing Todo", "Description", false));
+        given(todoService.update(anyLong(), any(TodoRequestDto.class)))
+                .willReturn(updatedTodo);
 
         mockMvc.perform(
                         put("/api/todos/v2/1")
                                 .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
                                 .content("{\"title\": \"Updated Todo\", " +
                                         "\"description\": \"Updated"
                                         + " Description\"}"))

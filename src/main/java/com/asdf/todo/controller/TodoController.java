@@ -2,7 +2,6 @@ package com.asdf.todo.controller;
 
 import com.asdf.todo.dto.TodoRequestDto;
 import com.asdf.todo.dto.TodoResponseDto;
-import com.asdf.todo.entity.Todo;
 import com.asdf.todo.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -48,7 +47,7 @@ public class TodoController {
     @PostMapping
     @Operation(summary = "작업 생성", description = "새로운 작업 생성")
     @ApiResponses({@ApiResponse(responseCode = "201", description = "생성됨")})
-    public ResponseEntity<Todo> createTodo(@RequestBody TodoRequestDto todo) {
+    public ResponseEntity<TodoResponseDto> createTodo(@RequestBody TodoRequestDto todo) {
         return ResponseEntity.status(201).body(todoService.save(todo));
     }
 
@@ -59,7 +58,8 @@ public class TodoController {
         @ApiResponse(responseCode = "404", description = "작업 없음")
     })
     public ResponseEntity<TodoResponseDto> updateTodo(
-            @PathVariable Long id, @RequestBody TodoResponseDto todo) {
+            @PathVariable Long id,
+            @RequestBody TodoRequestDto todo) {
         TodoResponseDto existingTodo = todoService.findById(id);
         if (existingTodo == null) {
             return ResponseEntity.notFound().build();
