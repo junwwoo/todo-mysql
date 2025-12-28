@@ -1,7 +1,7 @@
 package com.asdf.todo.config;
 
-import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +16,5 @@ public class ApiDocumentationConfig {
                                 .title("TODO List API")
                                 .version("1.0")
                                 .description("Spring Bott3를 이용한 TODO List API 문서"));
-
     }
 }

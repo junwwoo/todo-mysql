@@ -1,12 +1,10 @@
 package com.asdf.todo.service;
 
-
 import com.asdf.todo.model.Todo;
 import com.asdf.todo.repository.TodoInMemoryRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TodoService {
@@ -25,7 +23,7 @@ public class TodoService {
         return todoRepository.findById(id);
     }
 
-    public Todo save(Todo todo){
+    public Todo save(Todo todo) {
         return todoRepository.save(todo);
     }
 

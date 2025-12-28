@@ -1,14 +1,12 @@
 package com.asdf.todo.repository;
 
-
 import com.asdf.todo.model.Todo;
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class TodoInMemoryRepository {
@@ -23,8 +21,8 @@ public class TodoInMemoryRepository {
         return todoMap.get(id);
     }
 
-    public Todo save(Todo todo){
-        if (todo.getId() == null){
+    public Todo save(Todo todo) {
+        if (todo.getId() == null) {
             todo.setId(counter.incrementAndGet());
         }
         todoMap.put(todo.getId(), todo);
