@@ -30,7 +30,7 @@ public class TodoController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "전체 작업 조회", description = "ID로 작업 조회")
+    @Operation(summary = "작업 조회", description = "ID로 작업 조회")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "성공"),
         @ApiResponse(responseCode = "404", description = "작업 없음")
